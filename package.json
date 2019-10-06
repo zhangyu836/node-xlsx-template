@@ -1,0 +1,25 @@
+{
+  "name": "xltpl",
+  "version": "0.1.0",
+  "description": "A node module to generate .xlsx files from a .xlsx template.",
+  "main": "./xltpl/xXlsx.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "author": "Zhang Yu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangyu836/node-xlsx-template.git"
+  },
+  "dependencies": {
+    "exceljs": "^2.0.0",
+    "nunjucks": "^2.5.0"
+  },
+  "keywords": [
+    "xlsx",
+    "excel",
+    "spreadsheet",
+    "template"
+  ]
+}
