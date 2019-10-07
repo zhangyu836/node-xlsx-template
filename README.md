@@ -57,6 +57,10 @@ If there is another tag，it is equivalent to {{amt}}，will be converted to a s
 
 ## How to use
 
+```shell
+npm install xltpl
+```
+
 ### Create a .xlsx template
 
 You can add nunjucks template tags in worksheet cells and in cell notes(comments).   
@@ -71,7 +75,7 @@ In payload, you can use sheetTplName or sheetTplIndex to specify the worksheet t
 ### Run the code
 
 ```javascript
-let xXlsx = require('../xltpl/xXlsx');
+let xXlsx = require('xltpl');
 async function f() {
     let xlsx = new xXlsx();
     await xlsx.load("./test.xlsx");    
