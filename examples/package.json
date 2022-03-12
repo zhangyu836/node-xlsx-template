@@ -2,9 +2,9 @@
   "name": "examples for xltpl",
   "version": "0.1.0",
   "description": "examples for xltpl",
-  "main": "examples/example1.js",
+  "main": "examples/example.js",
   "scripts": {
-    "run": "examples/example1.js"
+    "run": "examples/example.js"
   },
   "author": "Zhang Yu",
   "license": "MIT",
