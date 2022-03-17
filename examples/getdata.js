@@ -1,5 +1,5 @@
 let path = require('path');
-let {getExtension, fsReadFileAsync} = require('xltpl/xltpl/imageref');
+let {getExtension, fsReadFileAsync} = require('xltpl/lib/imageref');
 
 class Item {
     constructor(name, category, price, count){

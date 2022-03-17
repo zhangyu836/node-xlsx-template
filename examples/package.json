@@ -1,5 +1,5 @@
 {
-  "name": "examples for xltpl",
+  "name": "examples4xltpl",
   "version": "0.1.0",
   "description": "examples for xltpl",
   "main": "examples/example.js",
@@ -13,7 +13,7 @@
     "url": "https://github.com/zhangyu836/node-xlsx-template.git"
   },
   "dependencies": {
-    "xltpl": "^0.2.1"
+    "xltpl": "^0.2.2"
   },
   "keywords": [
     "xlsx",
