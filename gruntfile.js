@@ -4,7 +4,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-terser');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  //grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-exorcise');
 
@@ -19,7 +20,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            src: ['./lib/*.js'],
+            src: ['./tmp/*.js'],
             dest: './build/',
           },
         ],
@@ -45,12 +46,12 @@ module.exports = function(grunt) {
       },
       bare: {
         // keep the original source for source maps
-        src: ['./lib/bookwriter.js'],
+        src: ['./tmp/bookwriter.js'],
         dest: './dist/xltpl.bare.js',
       },
       bundle: {
         // keep the original source for source maps
-        src: ['./lib/xltpl.browser.js'],
+        src: ['./tmp/xltpl.browser.js'],
         dest: './dist/xltpl.js',
       }
     },
@@ -102,14 +103,39 @@ module.exports = function(grunt) {
     },
 
     copy: {
+      lib: {
+        files: [
+          {expand: true, src: ['**'], cwd: './lib', dest: './tmp'},
+        ],
+      },
+      browser: {
+        files: [
+          {expand: true, src: ['**'], cwd: './browser', dest: './tmp'},
+        ],
+      },
       dist: {
         files: [
-          {expand: true, src: ['**'], cwd: './build/lib', dest: './dist/es5'},
+          {expand: true, src: ['**'], cwd: './build/tmp', dest: './dist/es5'},
+          {src: './LICENSE', dest: './dist/LICENSE'},
         ],
+      },
+    },
+
+    clean: {
+      tmp: {
+        src: ['tmp'],
+      },
+      build: {
+        src: ['build'],
+      },
+      dist: {
+        src: ['dist'],
       },
     },
   });
 
-  grunt.registerTask('build', ['babel:dist', 'browserify', 'terser', 'exorcise', 'copy']);
+  //grunt.registerTask('build', ['babel:dist', 'browserify', 'terser', 'exorcise', 'copy']);
+  grunt.registerTask('build', ['clean', 'copy:lib', 'copy:browser', 'babel:dist',
+    'browserify', 'terser', 'exorcise', 'copy:dist', 'clean:tmp', 'clean:build']);
   grunt.registerTask('ug', ['terser']);
 };
