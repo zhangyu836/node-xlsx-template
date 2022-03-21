@@ -50,6 +50,10 @@ run();
 ```
 See [examples](https://github.com/zhangyu836/node-xlsx-template/tree/master/examples). 
 
+## CodeSandbox examples
+* [browser](https://codesandbox.io/s/xlsx-export-with-exceljs-and-xltpl-58j9g6)
+* [node](https://codesandbox.io/s/exceljs-template-with-xltpl-4w58xo)
+
 ## Supported
 * MergedCell   
 * Non-string value for a cell (use **{{variable}}** with no leading  or trailing spaces or **{%xv variable%}** to specify a variable) 
