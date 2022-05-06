@@ -1,8 +1,8 @@
 {
   "name": "xltpl",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "A node module to generate .xlsx files from a .xlsx template.",
-  "main": "lib/bookwriter.js",
+  "main": "lib/exceljs/bookwriter.js",
   "author": "Zhang Yu",
   "license": "MIT",
   "repository": {

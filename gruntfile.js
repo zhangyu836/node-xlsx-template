@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            src: ['./tmp/*.js'],
+            src: ['./tmp/**/*.js'],
             dest: './build/',
           },
         ],
@@ -46,13 +46,18 @@ module.exports = function(grunt) {
       },
       bare: {
         // keep the original source for source maps
-        src: ['./tmp/bookwriter.js'],
+        src: ['./tmp/exceljs/bookwriter.js'],
         dest: './dist/xltpl.bare.js',
       },
       bundle: {
         // keep the original source for source maps
-        src: ['./tmp/xltpl.browser.js'],
+        src: ['./tmp/exceljs/xltpl.browser.js'],
         dest: './dist/xltpl.js',
+      },
+      luckysheet: {
+        // keep the original source for source maps
+        src: ['./tmp/luckysheet/bookwriter.js'],
+        dest: './dist/xltpl.ls.js',
       }
     },
 
@@ -89,6 +94,19 @@ module.exports = function(grunt) {
           './dist/xltpl.bare.min.js': ['./dist/xltpl.bare.js'],
         },
       },
+      luckysheet: {
+        options: {
+          // Keep the original source maps from browserify
+          // See also https://www.npmjs.com/package/terser#source-map-options
+          sourceMap: {
+            content: 'inline',
+            url: 'xltpl.ls.min.js.map',
+          },
+        },
+        files: {
+          './dist/xltpl.ls.min.js': ['./dist/xltpl.ls.js'],
+        },
+      },
     },
 
     // Move source maps to a separate file
@@ -98,6 +116,12 @@ module.exports = function(grunt) {
         files: {
           './dist/xltpl.js.map': ['./dist/xltpl.js'],
           './dist/xltpl.bare.js.map': ['./dist/xltpl.bare.js'],
+        },
+      },
+      luckysheet: {
+        options: {},
+        files: {
+          './dist/xltpl.ls.js.map': ['./dist/xltpl.ls.js'],
         },
       },
     },
@@ -110,7 +134,7 @@ module.exports = function(grunt) {
       },
       browser: {
         files: [
-          {expand: true, src: ['**'], cwd: './browser', dest: './tmp'},
+          {expand: true, src: ['**'], cwd: './browser/exceljs', dest: './tmp/exceljs'},
         ],
       },
       dist: {
